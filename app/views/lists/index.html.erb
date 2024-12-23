@@ -1,9 +1,5 @@
-<!-- matches what he has in the course -->
-<p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Lists" %>
-
-<h1>Lists</h1>
 
 <table class="table table-bordered">
 
@@ -33,3 +29,6 @@
 
 <br>
 <%= link_to "Add To-do Item", new_list_path, class: 'btn btn-secondary' %>
+<br>
+<br>
+<%= link_to "Delete Completed Items", home_trash_em_path, data: { turbo_method: :get, turbo_confirm: 'Are you sure?' } %>
