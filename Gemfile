@@ -28,6 +28,10 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+# added by me 12/19
+gem 'bootstrap', '~> 5.3.0'  # Use the latest stable version
+gem 'sassc-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
