@@ -78,25 +78,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
-  primary: &primary_production
-    <<: *default
-    database: todo_production
-    url: <%= ENV[postgres://u9n20pefm161eu:pb3187aa0d3edbd68ab130f7750174fcf3a04374d7f9d01a1931a1f0ccb950045@caij57unh724n3.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d1l07lb95e4gr5] %>
-    adapter: postgresql
-    encoding: unicode
-    username: todo
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    password: <%= ENV["TODO_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: todo_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: todo_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: todo_production_cable
-    migrations_paths: db/cable_migrate
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['postgres://u9n20pefm161eu:pb3187aa0d3edbd68ab130f7750174fcf3a04374d7f9d01a1931a1f0ccb950045@caij57unh724n3.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d1l07lb95e4gr5'] %>
