@@ -82,7 +82,11 @@ production:
   primary: &primary_production
     <<: *default
     database: todo_production
+    url: <%= ENV[postgres://u9n20pefm161eu:pb3187aa0d3edbd68ab130f7750174fcf3a04374d7f9d01a1931a1f0ccb950045@caij57unh724n3.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d1l07lb95e4gr5] %>
+    adapter: postgresql
+    encoding: unicode
     username: todo
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
     password: <%= ENV["TODO_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
