@@ -8,7 +8,13 @@
     <% if list.completed %>
         <tr class="table-secondary">
           <td  class="striker"><%= link_to list.description, edit_list_path(list) %>   </td>
-          <td>Uncheck</td>
+          <td>
+            <%= form_for(list) do |form| %>
+              <%= form.text_field :description, type: 'hidden' %>
+              <%= form.check_box :completed, :checked => false, :style => 'visibility: hidden' %>
+              <%= form.submit "Uncross Off "%>
+            <% end %>
+          </td>
           <td> 
             <% link_to 'Show', list %>
             <% link_to 'Edit', edit_list_path(list) %>
@@ -17,13 +23,15 @@
         </tr>
         <% else %>
         <tr>
-          <td> <%= link_to list.description, edit_list_path(list) %> </td>
-          <td>Check</td>
-          <% form_for(list) do |f| %>
-            <%= f.text_field :description, type: 'hidden' %>
-            <%= f.check_box :completed, :checked => true, :style => 'visibility: hidden' %>
-            <%= f.submit 'Check', class: 'btn btn-secondary' %>
-          <% end %>
+          <td> <%= link_to list.description, edit_list_path(list) %> <% list.description %></td>
+          <td>
+            <%= form_for(list) do |form| %>
+              <%= form.text_field :description, type: 'hidden' %>
+              <%= form.check_box :completed, :checked => true, :style => 'visibility: hidden' %>
+              <%= form.submit "Cross Off "%>
+            <% end %>
+          </td>
+        </td>
 
 
 
